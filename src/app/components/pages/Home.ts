@@ -6,54 +6,65 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { Dashboard } from '../const/Dashboard';
 import { MBCareers } from '../const/Mbcareers';
-import { MBServices } from "../const/mbservices";
-import { IsstDashboard } from "../const/isstdasboard";
+import { MBServices } from '../const/mbservices';
+import { IsstDashboard } from '../const/isstdasboard';
 
 @Component({
   selector: 'app-home',
   template: `
     <section>
       @if (isTure === false) {
-        <section class="flex items-center justify-center flex-col min-h-screen gap-8">
-          <!-- Heading -->
-          <div class="text-center">
-            <h1
-              class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-transparent"
-            >
-              {{ title | uppercase }}
-            </h1>
-            <!-- <h2 class="text-xl text-gray-700 font-medium mt-2">
-              {{ subtitle | uppercase }}
-            </h2> -->
-            <h2
-              class="text-xl font-bold bg-gradient-to-r from-emerald-500 from-10% via-sky-500 via-30% to-indigo-500 to-90% bg-clip-text text-transparent"
-            >
-              {{ subtitle | uppercase }}
-            </h2>
-          </div>
-
-          <!-- Form Card -->
-          <div
-            class="card flex md:flex-col justify-center p-6 w-full max-w-md bg-white shadow-lg rounded-lg"
+        <section
+          class="relative flex items-center justify-center flex-col min-h-screen gap-8 overflow-hidden"
+        >
+          <!-- YouTube Background -->
+          <iframe
+            class="absolute top-0 left-0 w-full h-full object-cover scale-150 pointer-events-none"
+            src="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&mute=1&loop=1&playlist=ScMzIvxBSi4&controls=0&showinfo=0&modestbranding=1"
+            frameborder="0"
+            allow="autoplay; fullscreen"
           >
-            <div class="flex flex-col gap-4 w-full">
-              <label for="username" class="text-base font-medium"> Username </label>
+          </iframe>
 
-              <input
-                pInputText
-                id="username"
-                [(ngModel)]="value"
-                class="rounded-md px-4 py-2 w-full text-sm border focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+          <!-- Dark Overlay -->
+          <div class="absolute inset-0 bg-black/60"></div>
+
+          <!-- Content -->
+          <div class="relative z-10 flex flex-col items-center gap-8 w-full">
+            <!-- Heading -->
+            <div class="text-center">
+              <h1
+                class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent wave-text"
+              >
+                {{ title | uppercase }}
+              </h1>
             </div>
 
-            <div class="flex justify-center mt-4">
-              <p-button
-                label="Login"
-                severity="success"
-                class="px-6"
-                (onClick)="check()"
-              ></p-button>
+            <!-- Glass Login Card -->
+            <div
+              class="flex flex-col justify-center p-8 w-full max-w-md
+      bg-white/10 backdrop-blur-xl border border-white/20
+      shadow-2xl rounded-2xl"
+            >
+              <div class="flex flex-col gap-4 w-full">
+                <label for="username" class="text-white font-medium"> Username </label>
+
+                <input
+                  pInputText
+                  id="username"
+                  [(ngModel)]="value"
+                  class="rounded-md px-4 py-2 w-full text-sm bg-white/20 text-white border border-white/30 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                />
+              </div>
+
+              <div class="flex justify-center mt-6">
+                <p-button
+                  label="Login"
+                  severity="success"
+                  class="px-6"
+                  (onClick)="check()"
+                ></p-button>
+              </div>
             </div>
           </div>
         </section>
@@ -91,7 +102,7 @@ import { IsstDashboard } from "../const/isstdasboard";
                 MB Services
               </button>
 
-                            <button
+              <button
                 class="text-left px-4 py-3 rounded-lg transition-all duration-300 hover:bg-emerald-600 hover:text-white hover:translate-x-1"
                 (click)="activeSection = 'isst'"
               >
@@ -125,8 +136,7 @@ import { IsstDashboard } from "../const/isstdasboard";
                 <app-mbcareers />
               } @else if (activeSection === 'mbs') {
                 <app-mbs />
-              }
-              @else if (activeSection === 'isst') {
+              } @else if (activeSection === 'isst') {
                 <app-isst />
               }
             </main>
@@ -135,7 +145,40 @@ import { IsstDashboard } from "../const/isstdasboard";
       }
     </section>
   `,
-  imports: [CommonModule, FormsModule, InputTextModule, ButtonModule, Dashboard, MBCareers, MBServices, IsstDashboard],
+  styles: `
+    .wave-text {
+      background-size: 300% 300%;
+      animation: waveGradient 5s ease-in-out infinite;
+    }
+
+    @keyframes waveGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      25% {
+        background-position: 50% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      75% {
+        background-position: 50% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  `,
+  imports: [
+    CommonModule,
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+    Dashboard,
+    MBCareers,
+    MBServices,
+    IsstDashboard,
+  ],
 })
 export class Home implements OnInit {
   isTure: boolean = false;

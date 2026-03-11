@@ -1,9 +1,9 @@
-import { Mbcservices } from './../../services/mbcservices';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TabsModule } from 'primeng/tabs';
 import { CommonModule } from '@angular/common';
+import { Mbcservices } from '../../services/Mbc.service';
 
 @Component({
   selector: 'app-mbcareers',

@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from './../../environments/environment.production';
 import { Injectable } from '@angular/core';
 import { map, catchError, throwError } from 'rxjs';
 
@@ -7,7 +6,7 @@ import { map, catchError, throwError } from 'rxjs';
   providedIn: 'root'   // 🔥 VERY IMPORTANT
 })
 export class Mbcservices {
-  url = environment.apiUrl ;
+  url = "https://homeapp-mu.vercel.app/api" ;
   header_post: HttpHeaders = new HttpHeaders();
 
   constructor(private _http: HttpClient) {

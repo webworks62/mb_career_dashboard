@@ -1,17 +1,30 @@
 import { Component } from "@angular/core";
 
 @Component({
-   selector:"app-error404",
-  imports:[],
-  template:`
-    <section>
-      <h1>
-        This is a Error Page
+  selector: "app-error404",
+  imports: [],
+  template: `
+   <div class="flex items-center justify-center min-h-screen bg-blue-700 px-4">
+
+  <div class="flex flex-col items-center justify-center">
+
+    <!-- Circle Container -->
+    <div
+      class="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] flex items-center justify-center bg-white rounded-full shadow-xl">
+
+      <!-- 404 TEXT -->
+      <h1 class="absolute text-5xl sm:text-7xl font-extrabold text-blue-700 tracking-widest">
+        404
       </h1>
-    </section>
+
+    </div>
+
+  </div>
+
+</div>
   `
 })
 
-export class Error404{
+export class Error404 {
 
 }

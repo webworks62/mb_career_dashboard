@@ -203,6 +203,7 @@ export class Home implements OnInit {
       this.isTure = true; // update UI without reload
     }
   }
+  
 
   logout() {
     localStorage.removeItem('tokendata');

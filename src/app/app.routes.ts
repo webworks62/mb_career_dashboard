@@ -3,8 +3,8 @@ import { Error404 } from './components/shared/error/error404';
 import { Home } from './components/pages/Home';
 
 export const routes: Routes = [
-  // { path: '', component: Home },
-  { path: '', component: Error404 },
+  { path: '', component: Home },
+  // { path: '', component: Error404 },
   // {
   //   path: 'task-details/:id',
   //   component: TaskDetails,
